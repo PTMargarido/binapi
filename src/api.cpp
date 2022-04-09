@@ -239,6 +239,7 @@ struct api::impl {
             data += "&signature=";
             data += signature;
         }
+         std::cout << data << std::endl;
 
         bool get_delete =
             action == boost::beast::http::verb::get ||
@@ -823,6 +824,7 @@ api::new_order(
     ,const e_time time
     ,const e_trade_resp_type resp
     ,const char *amount
+    ,const char *quoteAmount
     ,const char *price
     ,const char *client_order_id
     ,const char *stop_price
@@ -849,6 +851,7 @@ api::new_order(
         ,{"type", type_str}
         ,{"timeInForce", time_str}
         ,{"quantity", amount}
+        ,{"quoteOrderQty", quoteAmount}
         ,{"price", price}
         ,{"newClientOrderId", client_order_id}
         ,{"stopPrice", stop_price}
